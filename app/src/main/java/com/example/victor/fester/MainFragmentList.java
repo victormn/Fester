@@ -23,22 +23,12 @@ public class MainFragmentList extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        Intent intent = getActivity().getIntent();
-        String titleMusic = intent.getStringExtra(MusicAddMenu.MUSIC_TITLE);
-        String artistMusic = intent.getStringExtra(MusicAddMenu.MUSIC_ARTIST);
+        MusicDBAdapter dbAdapter = new MusicDBAdapter(getActivity().getBaseContext());
+        dbAdapter.open();
 
-        musics.add(new Music(titleMusic, artistMusic));
+        musics = dbAdapter.getAllMusic();
 
-/*        musics.add(new Music("Under Pressure", "Queen, David Bowie"));
-        musics.add(new Music("Bohemian Rhapsody", "Queen"));
-        musics.add(new Music("Don't Stop Me Now", "Queen"));
-        musics.add(new Music("I Bet You Look Good on The Dancefloor", "Arctic Monkeys"));
-        musics.add(new Music("R U Mine", "Arctic Monkeys"));
-        musics.add(new Music("Fluorescent Adolescent", "Arctic Monkeys"));
-        musics.add(new Music("Numb Encore", "Linkin Park, Jay-Z"));
-        musics.add(new Music("In The End", "Linkin Park"));
-        musics.add(new Music("Eight Days a Week", "The Beatles"));
-        musics.add(new Music("Come Together", "The Beatles"));*/
+        dbAdapter.close();
 
         musicAdapter = new MusicAdapter(getActivity(), musics);
 
