@@ -24,14 +24,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/titleMusicAdd"
             android:layout_gravity="center_horizontal"
-            android:hint="Título da Música" />
+            android:hint="Título da Música"
+            android:capitalize="words" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/artistMusicAdd"
             android:layout_gravity="center_horizontal"
-            android:hint="Artista da Música" />
+            android:hint="Artista da Música"
+            android:capitalize="words" />
 
     </LinearLayout>
 </RelativeLayout>
