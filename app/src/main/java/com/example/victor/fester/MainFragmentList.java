@@ -2,6 +2,7 @@ package com.example.victor.fester;
 
 
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,12 +15,21 @@ public class MainFragmentList extends ListFragment {
     private ArrayList<Music> musics;
     private MusicAdapter musicAdapter;
 
+    public MainFragmentList(){
+        musics = new ArrayList<>();
+    }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        musics = new ArrayList<Music>();
-        musics.add(new Music("Under Pressure", "Queen, David Bowie"));
+        Intent intent = getActivity().getIntent();
+        String titleMusic = intent.getStringExtra(MusicAddMenu.MUSIC_TITLE);
+        String artistMusic = intent.getStringExtra(MusicAddMenu.MUSIC_ARTIST);
+
+        musics.add(new Music(titleMusic, artistMusic));
+
+/*        musics.add(new Music("Under Pressure", "Queen, David Bowie"));
         musics.add(new Music("Bohemian Rhapsody", "Queen"));
         musics.add(new Music("Don't Stop Me Now", "Queen"));
         musics.add(new Music("I Bet You Look Good on The Dancefloor", "Arctic Monkeys"));
@@ -28,18 +38,18 @@ public class MainFragmentList extends ListFragment {
         musics.add(new Music("Numb Encore", "Linkin Park, Jay-Z"));
         musics.add(new Music("In The End", "Linkin Park"));
         musics.add(new Music("Eight Days a Week", "The Beatles"));
-        musics.add(new Music("Come Together", "The Beatles"));
+        musics.add(new Music("Come Together", "The Beatles"));*/
 
         musicAdapter = new MusicAdapter(getActivity(), musics);
 
         setListAdapter(musicAdapter);
 
         getListView().setDivider(null);
-
     }
 
     @Override
     public void onListItemClick (ListView l, View v, int position, long id){
         super.onListItemClick(l, v, position, id);
     }
+
 }
