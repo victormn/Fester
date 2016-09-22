@@ -27,7 +27,7 @@
                 android:text="Título da Música"
                 android:id="@+id/musicTitle"
                 android:layout_alignParentTop="true"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:layout_marginBottom="2dp"
@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Artistas da Música"
                 android:id="@+id/musicArtist"
                 android:ellipsize="end"
