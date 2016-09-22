@@ -12,9 +12,6 @@ import android.widget.TextView;
 
 public class MusicAddMenu extends AppCompatActivity {
 
-    public final static String MUSIC_TITLE = "com.example.victor.fester.MUSIC_TITLE";
-    public final static String MUSIC_ARTIST = "com.example.victor.fester.MUSIC_ARTIST";
-
     public String titleMusic, artistMusic;
     public EditText etTitle, etArtist;
 
@@ -28,15 +25,22 @@ public class MusicAddMenu extends AppCompatActivity {
 
             public void onClick(View view) {
 
+                // Recuperando os valores das variaveis titleMusicAdd e artistMusicAdd em Strings
                 etTitle = (EditText) findViewById(R.id.titleMusicAdd);
                 etArtist = (EditText) findViewById(R.id.artistMusicAdd);
 
                 artistMusic = etArtist.getText().toString();
                 titleMusic = etTitle.getText().toString();
 
+                // Salvando esses valores na base de dados do aplicativo
+                MusicDBAdapter dbAdapter = new MusicDBAdapter(getBaseContext());
+
+                dbAdapter.open();
+
+                dbAdapter.createMusic(titleMusic, artistMusic);
+
+                // Mudando para a tela principal
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra(MUSIC_TITLE, titleMusic);
-                intent.putExtra(MUSIC_ARTIST, artistMusic);
                 startActivity(intent);
 
             }

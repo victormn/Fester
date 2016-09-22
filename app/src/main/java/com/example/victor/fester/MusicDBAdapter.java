@@ -1,5 +1,6 @@
 package com.example.victor.fester;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -21,7 +22,7 @@ public class MusicDBAdapter {
     public static final String COLUMN_TITLE = "title";
     public static final String COLUMN_ARTIST = "artist";
 
-    private String[] allColumns = {COLUMN_ARTIST, COLUMN_ID, COLUMN_TITLE};
+    private String[] allColumns = {COLUMN_ID, COLUMN_TITLE, COLUMN_ARTIST};
 
     public static final String CREATE_TABLE_MUSIC = "create table " + MUSIC_TABLE + " ( "
             + COLUMN_ID + " integer primary key autoincrement, "
@@ -45,6 +46,23 @@ public class MusicDBAdapter {
 
     public void close(){
         musicDBHelper.close();
+    }
+
+    public Music createMusic(String title, String artist){
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_TITLE, title);
+        values.put(COLUMN_ARTIST, artist);
+
+        long insertId = sqlDB.insert(MUSIC_TABLE,null, values);
+
+        Cursor cursor = sqlDB.query(MUSIC_TABLE, allColumns, COLUMN_ID + " = " + insertId, null, null, null, null);
+
+        cursor.moveToFirst();
+        Music music = cursorToMusic(cursor);
+        cursor.close();
+
+        return music;
     }
 
     public ArrayList<Music> getAllMusic(){
