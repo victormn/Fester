@@ -32,12 +32,16 @@ public class MusicAddMenu extends AppCompatActivity {
                 artistMusic = etArtist.getText().toString();
                 titleMusic = etTitle.getText().toString();
 
-                // Salvando esses valores na base de dados do aplicativo
-                MusicDBAdapter dbAdapter = new MusicDBAdapter(getBaseContext());
+                // Verificando se foi digitado algo
+                if(etArtist.getText().length() > 0 && etTitle.getText().length() > 0) {
 
-                dbAdapter.open();
+                    // Salvando esses valores na base de dados do aplicativo
+                    MusicDBAdapter dbAdapter = new MusicDBAdapter(getBaseContext());
 
-                dbAdapter.createMusic(titleMusic, artistMusic);
+                    dbAdapter.open();
+
+                    dbAdapter.createMusic(titleMusic, artistMusic);
+                }
 
                 // Mudando para a tela principal
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);

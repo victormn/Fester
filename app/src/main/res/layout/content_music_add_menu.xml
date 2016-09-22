@@ -25,7 +25,8 @@
             android:id="@+id/titleMusicAdd"
             android:layout_gravity="center_horizontal"
             android:hint="Título da Música"
-            android:capitalize="words" />
+            android:capitalize="words"
+            android:singleLine="true" />
 
         <EditText
             android:layout_width="match_parent"
@@ -33,7 +34,8 @@
             android:id="@+id/artistMusicAdd"
             android:layout_gravity="center_horizontal"
             android:hint="Artista da Música"
-            android:capitalize="words" />
+            android:capitalize="words"
+            android:singleLine="true" />
 
     </LinearLayout>
 </RelativeLayout>

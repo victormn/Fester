@@ -85,6 +85,10 @@ public class MusicDBAdapter {
         return newMusic;
     }
 
+    public long deleteMusic(long idToDelete){
+        return sqlDB.delete(MUSIC_TABLE, COLUMN_ID + " = " + idToDelete, null);
+    }
+
     private static class MusicDBHelper extends SQLiteOpenHelper{
 
         MusicDBHelper(Context context){

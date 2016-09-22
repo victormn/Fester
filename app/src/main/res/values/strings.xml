@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">Fester!</string>
+    <string name="app_name">Fester! • Lista de Músicas</string>
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_music_add_menu">Adicionar Músicas</string>
+    <string name="title_activity_music_add_menu">Adicionar Música</string>
+
+    <string name="delete_menu_text">Remover</string>
 </resources>
