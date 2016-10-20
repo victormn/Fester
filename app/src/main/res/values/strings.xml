@@ -7,4 +7,7 @@
     <string name="title_activity_music_add_menu">Adicionar Música</string>
 
     <string name="delete_menu_text">Remover</string>
+    <string name="title_activity_tabbed">DJ</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
 </resources>

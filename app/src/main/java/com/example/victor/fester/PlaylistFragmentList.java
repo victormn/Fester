@@ -1,14 +1,17 @@
 package com.example.victor.fester;
 
 
-import android.app.ListFragment;
+import android.support.v4.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -16,12 +19,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainFragmentList extends ListFragment {
+public class PlaylistFragmentList extends ListFragment {
 
     private ArrayList<Music> musics;
     private MusicAdapter musicAdapter;
 
-    public MainFragmentList(){
+    public PlaylistFragmentList(){
         musics = new ArrayList<>();
     }
 
@@ -59,6 +62,10 @@ public class MainFragmentList extends ListFragment {
 
     }
 
+    static PlaylistFragmentList newInstance() {
+        return new PlaylistFragmentList();
+    }
+
     @Override
     public boolean onContextItemSelected(MenuItem item){
 
@@ -87,5 +94,4 @@ public class MainFragmentList extends ListFragment {
         return super.onContextItemSelected(item);
 
     }
-
 }
