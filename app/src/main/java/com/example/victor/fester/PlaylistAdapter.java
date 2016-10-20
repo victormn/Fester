@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * Created by Victor on 20/09/2016.
  */
-public class MusicAdapter extends ArrayAdapter<Music>{
+public class PlaylistAdapter extends ArrayAdapter<Music>{
 
     // Utilizado para armazenar os valores de Titulo e Artista
     // Dessa forma, nao precisa ficar carregando-os caso os mesmos ja existam
@@ -22,7 +22,7 @@ public class MusicAdapter extends ArrayAdapter<Music>{
     }
 
 
-    public MusicAdapter (Context context, ArrayList<Music> musics){
+    public PlaylistAdapter(Context context, ArrayList<Music> musics){
         super(context, 0 , musics);
     }
 

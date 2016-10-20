@@ -49,8 +49,16 @@ public class TabbedActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        final FloatingActionButton fab1 = (FloatingActionButton) findViewById(R.id.fab1);
+        fab1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MusicAddMenu.class);
+                startActivity(intent);
+            }
+        });
+
+        final FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+        fab2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MusicAddMenu.class);
                 startActivity(intent);
@@ -67,11 +75,13 @@ public class TabbedActivity extends AppCompatActivity {
 
                 switch (position) {
                     case 0:
-                        fab.show();
+                        fab1.show();
+                        fab2.hide();
                         break;
 
                     default:
-                        fab.hide();
+                        fab1.hide();
+                        fab2.show();
                         break;
                 }
             }

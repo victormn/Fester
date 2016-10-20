@@ -2,27 +2,20 @@ package com.example.victor.fester;
 
 
 import android.support.v4.app.ListFragment;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.ContextMenu;
-import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class PlaylistFragmentList extends ListFragment {
 
     private ArrayList<Music> musics;
-    private MusicAdapter musicAdapter;
+    private PlaylistAdapter playlistAdapter;
 
     public PlaylistFragmentList(){
         musics = new ArrayList<>();
@@ -32,16 +25,16 @@ public class PlaylistFragmentList extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        MusicDBAdapter dbAdapter = new MusicDBAdapter(getActivity().getBaseContext());
+        PlaylistDBAdapter dbAdapter = new PlaylistDBAdapter(getActivity().getBaseContext());
         dbAdapter.open();
 
         musics = dbAdapter.getAllMusic();
 
         dbAdapter.close();
 
-        musicAdapter = new MusicAdapter(getActivity(), musics);
+        playlistAdapter = new PlaylistAdapter(getActivity(), musics);
 
-        setListAdapter(musicAdapter);
+        setListAdapter(playlistAdapter);
 
         registerForContextMenu(getListView());
 
@@ -78,14 +71,14 @@ public class PlaylistFragmentList extends ListFragment {
 
             case R.id.delete:
 
-                MusicDBAdapter dbAdapter = new MusicDBAdapter(getActivity().getBaseContext());
+                PlaylistDBAdapter dbAdapter = new PlaylistDBAdapter(getActivity().getBaseContext());
                 dbAdapter.open();
                 dbAdapter.deleteMusic(music.getMusicId());
 
                 // Refresh
                 musics.clear();
                 musics.addAll(dbAdapter.getAllMusic());
-                musicAdapter.notifyDataSetChanged();
+                playlistAdapter.notifyDataSetChanged();
 
                 dbAdapter.close();
                 return true;

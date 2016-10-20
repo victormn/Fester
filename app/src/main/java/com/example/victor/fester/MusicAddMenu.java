@@ -38,11 +38,17 @@ public class MusicAddMenu extends AppCompatActivity {
                 if(etArtist.getText().length() > 0 && etTitle.getText().length() > 0) {
 
                     // Salvando esses valores na base de dados do aplicativo
-                    MusicDBAdapter dbAdapter = new MusicDBAdapter(getBaseContext());
+                    PlaylistDBAdapter dbAdapter = new PlaylistDBAdapter(getBaseContext());
 
                     dbAdapter.open();
 
                     dbAdapter.createMusic(titleMusic, artistMusic);
+
+                    RankingDBAdapter dbAdapter2 = new RankingDBAdapter(getBaseContext());
+
+                    dbAdapter2.open();
+
+                    dbAdapter2.createMusic(titleMusic, artistMusic, 1);
                 }
 
                 // Mudando para a tela principal
@@ -54,3 +60,20 @@ public class MusicAddMenu extends AppCompatActivity {
     }
 
 }
+
+/*    private ArrayList<String> titles;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        titles = new ArrayList<>();
+        titles.add("The View from the Afternoon ");
+        titles.add("I Bet You Look Good on the Dancefloor");
+        titles.add("Fake Tales of San Francisco");
+        titles.add("Dancing Shoes");
+        titles.add("You Probably Couldn't See for the Lights but You Were Staring Straight at Me");
+        titles.add("Still Take You Home");
+        titles.add("Riot Van");
+        titles.add("Red Light Indicates Doors Are Secured");
+        titles.add("Mardy Bum");
+        titles.add("Perhaps Vampires Is a Bit Strong But...");*/

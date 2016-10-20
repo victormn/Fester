@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * Created by Victor on 21/09/2016.
  */
-public class MusicDBAdapter {
+public class PlaylistDBAdapter {
 
     private static final String DATABASE_NAME = "music.db";
     private static final int DATABASE_VERSION = 1;
@@ -34,11 +34,11 @@ public class MusicDBAdapter {
 
     private MusicDBHelper musicDBHelper;
 
-    public MusicDBAdapter(Context ctx){
+    public PlaylistDBAdapter(Context ctx){
         context = ctx;
     }
 
-    public MusicDBAdapter open() throws android.database.SQLException{
+    public PlaylistDBAdapter open() throws android.database.SQLException{
         musicDBHelper = new MusicDBHelper(context);
         sqlDB = musicDBHelper.getWritableDatabase();
         return this;
