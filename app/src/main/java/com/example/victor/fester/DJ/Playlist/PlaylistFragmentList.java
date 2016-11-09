@@ -1,4 +1,4 @@
-package com.example.victor.fester;
+package com.example.victor.fester.DJ.Playlist;
 
 
 import android.support.v4.app.ListFragment;
@@ -9,6 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.example.victor.fester.Music.Music;
+import com.example.victor.fester.R;
 
 import java.util.ArrayList;
 

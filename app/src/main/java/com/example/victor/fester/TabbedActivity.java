@@ -13,6 +13,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
+import com.example.victor.fester.DJ.Playlist.PlaylistFragmentList;
+import com.example.victor.fester.DJ.Ranking.RankingFragmentList;
+import com.example.victor.fester.Music.MusicAddMenu;
+
 
 public class TabbedActivity extends AppCompatActivity {
 
@@ -133,7 +137,7 @@ public class TabbedActivity extends AppCompatActivity {
                 return PlaylistFragmentList.newInstance();
             }
             else{
-                return PlaylistFragmentList.newInstance();
+                return RankingFragmentList.newInstance();
 
             }
         }

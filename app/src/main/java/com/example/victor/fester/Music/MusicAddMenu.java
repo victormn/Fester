@@ -1,4 +1,4 @@
-package com.example.victor.fester;
+package com.example.victor.fester.Music;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+
+import com.example.victor.fester.DJ.Playlist.PlaylistDBAdapter;
+import com.example.victor.fester.R;
+import com.example.victor.fester.TabbedActivity;
 
 public class MusicAddMenu extends AppCompatActivity {
 
@@ -43,12 +47,8 @@ public class MusicAddMenu extends AppCompatActivity {
                     dbAdapter.open();
 
                     dbAdapter.createMusic(titleMusic, artistMusic);
+                    dbAdapter.close();
 
-                    RankingDBAdapter dbAdapter2 = new RankingDBAdapter(getBaseContext());
-
-                    dbAdapter2.open();
-
-                    dbAdapter2.createMusic(titleMusic, artistMusic, 1);
                 }
 
                 // Mudando para a tela principal
