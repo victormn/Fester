@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_party"
+            android:icon="@drawable/ic_star_black_48dp"
+            android:title="@string/party" />
+
+        <item
+        android:id="@+id/nav_info"
+        android:icon="@drawable/ic_perm_identity_black_48dp"
+        android:title="@string/info" />
+
+        <item
+            android:id="@+id/nav_passaporte"
+            android:icon="@drawable/ic_fingerprint_black_48dp"
+            android:title="@string/passport" />
+
+    </group>
+
+
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/nav_aboutus"
+            android:icon="@drawable/ic_info_black_48dp"
+            android:title="@string/aboutus" />
+        <item
+            android:id="@+id/nav_sair"
+            android:icon="@drawable/ic_exit_to_app_black_48dp"
+            android:title="@string/logout" />
+    </group>
+
+
+</menu>

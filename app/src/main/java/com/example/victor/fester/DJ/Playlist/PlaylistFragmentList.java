@@ -58,7 +58,7 @@ public class PlaylistFragmentList extends ListFragment {
 
     }
 
-    static PlaylistFragmentList newInstance() {
+    public static PlaylistFragmentList newInstance() {
         return new PlaylistFragmentList();
     }
 

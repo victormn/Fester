@@ -39,7 +39,7 @@ public class PlaylistAdapter extends ArrayAdapter<Music>{
         if (convertView == null){
 
             viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.musics_fragment, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.music_fragment, parent, false);
 
             viewHolder.title = (TextView) convertView.findViewById(R.id.musicTitle);
             viewHolder.artist = (TextView) convertView.findViewById(R.id.musicArtist);

@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_music_add_menu" />
+    <include layout="@layout/music_content_add_menu" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

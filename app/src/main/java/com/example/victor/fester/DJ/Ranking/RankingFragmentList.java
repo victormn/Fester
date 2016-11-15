@@ -43,7 +43,7 @@ public class RankingFragmentList extends ListFragment {
         super.onListItemClick(l, v, position, id);
     }
 
-    static RankingFragmentList newInstance() {
+    public static RankingFragmentList newInstance() {
         return new RankingFragmentList();
     }
 
