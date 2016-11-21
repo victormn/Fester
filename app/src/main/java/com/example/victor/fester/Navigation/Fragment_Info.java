@@ -10,8 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.victor.fester.R;
+import com.example.victor.fester.Toolbox.BitmapManager;
+import com.example.victor.fester.User.User;
+import com.example.victor.fester.User.UserDBAdapter;
 
 public class Fragment_Info extends Fragment {
 
@@ -26,10 +30,17 @@ public class Fragment_Info extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.navigation_fragment_info, container, false);
 
-        // Tratando a foto das informações
-        ImageView info_img = (ImageView)view.findViewById(R.id.info_foto);
+        // -- Tratando informacoes
 
-        Bitmap srcBmp = BitmapFactory.decodeResource(getResources(), R.drawable.foto);
+        // Recebendo usuario do BD
+        UserDBAdapter dbAdapter = new UserDBAdapter(getActivity().getBaseContext());
+        dbAdapter.open();
+        User user = dbAdapter.getUser();
+        dbAdapter.close();
+
+        // Tratando a foto
+        ImageView info_img = (ImageView)view.findViewById(R.id.info_foto);
+        Bitmap srcBmp = BitmapManager.byteArrayToBitmap(user.getPhoto());
         Bitmap dstBmp;
 
         if (srcBmp.getWidth() >= srcBmp.getHeight()){
@@ -43,6 +54,18 @@ public class Fragment_Info extends Fragment {
         RoundedBitmapDrawable dr = RoundedBitmapDrawableFactory.create(getResources(), src);
         dr.setCircular(true);
         info_img.setImageDrawable(dr);
+
+        // Tratando o nome
+        TextView nav_name = (TextView) view.findViewById(R.id.info_name);
+        nav_name.setText(user.getName());
+
+        // Tratando o email
+        TextView nav_email = (TextView) view.findViewById(R.id.info_email);
+        nav_email.setText(user.getEmail());
+
+        // Tratando o telefone
+        TextView nav_phone = (TextView) view.findViewById(R.id.info_phone);
+        nav_phone.setText(user.getPhone());
 
         return view;
     }

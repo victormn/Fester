@@ -16,9 +16,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.victor.fester.DJ.Playlist.PlaylistDBAdapter;
 import com.example.victor.fester.R;
+import com.example.victor.fester.Toolbox.BitmapManager;
+import com.example.victor.fester.User.User;
+import com.example.victor.fester.User.UserDBAdapter;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -65,10 +70,16 @@ public class NavigationActivity extends AppCompatActivity
 
         // -- Tratamento do NAVEGADOR aqui
 
-        // Tratando a foto do navegador
-        ImageView nav_img = (ImageView)findViewById(R.id.nav_header_image);
+        // Recebendo usuario do BD
+        UserDBAdapter dbAdapter = new UserDBAdapter(getBaseContext());
+        dbAdapter.open();
+        User user = dbAdapter.getUser();
+        dbAdapter.close();
 
-        Bitmap srcBmp = BitmapFactory.decodeResource(getResources(), R.drawable.foto);
+        // Tratando a foto
+        ImageView nav_img = (ImageView)findViewById(R.id.nav_header_image);
+        //Bitmap srcBmp = BitmapFactory.decodeResource(getResources(), R.drawable.foto);
+        Bitmap srcBmp = BitmapManager.byteArrayToBitmap(user.getPhoto());
         Bitmap dstBmp;
 
         if (srcBmp.getWidth() >= srcBmp.getHeight()){
@@ -82,6 +93,15 @@ public class NavigationActivity extends AppCompatActivity
         RoundedBitmapDrawable dr = RoundedBitmapDrawableFactory.create(getResources(), src);
         dr.setCircular(true);
         nav_img.setImageDrawable(dr);
+
+        // Tratando o nome
+        TextView nav_name = (TextView) findViewById(R.id.nav_header_name);
+        nav_name.setText(user.getName());
+
+        // Tratando o email
+        TextView nav_email = (TextView) findViewById(R.id.nav_header_email);
+        nav_email.setText(user.getEmail());
+
         return true;
     }
 
