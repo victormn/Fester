@@ -32,5 +32,6 @@
     <string name="info_phone">Telefone</string>
     <string name="info_photo">Alterar Foto</string>
     <string name="info_info">Deixe em branco caso não deseje editar</string>
+    <string name="info_update">Atualizar Informações</string>
 
 </resources>

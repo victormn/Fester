@@ -22,4 +22,9 @@ public class Fragment_Passport extends Fragment {
         return inflater.inflate(R.layout.navigation_fragment_passport, container, false);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle(getResources().getString(R.string.passport));
+    }
 }

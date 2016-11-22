@@ -26,6 +26,8 @@ import com.example.victor.fester.Toolbox.BitmapManager;
 import com.example.victor.fester.User.User;
 import com.example.victor.fester.User.UserDBAdapter;
 
+import java.sql.SQLOutput;
+
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -64,6 +66,10 @@ public class NavigationActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        if(getFragmentManager().getBackStackEntryCount() == 1)
+            setTitle(getResources().getString(R.string.party));
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -76,13 +82,10 @@ public class NavigationActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation, menu);
-
         infoUpdate(getBaseContext(), this);
 
         return true;
     }
-
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

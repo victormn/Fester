@@ -86,4 +86,10 @@ public class Fragment_Info extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle(getResources().getString(R.string.info));
+    }
+
 }
