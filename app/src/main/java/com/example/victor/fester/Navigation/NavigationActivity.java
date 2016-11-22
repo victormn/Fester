@@ -1,7 +1,8 @@
 package com.example.victor.fester.Navigation;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.app.Fragment;
@@ -15,11 +16,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.victor.fester.DJ.Playlist.PlaylistDBAdapter;
 import com.example.victor.fester.R;
 import com.example.victor.fester.Toolbox.BitmapManager;
 import com.example.victor.fester.User.User;
@@ -39,9 +40,15 @@ public class NavigationActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        final Activity activity = this;
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                infoUpdate(getBaseContext(), activity);
+            }
+        };
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -51,6 +58,7 @@ public class NavigationActivity extends AppCompatActivity
         setTitle(getResources().getString(R.string.party));
 
         fragment = null;
+
     }
 
     @Override
@@ -61,6 +69,7 @@ public class NavigationActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+
     }
 
     @Override
@@ -68,42 +77,12 @@ public class NavigationActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation, menu);
 
-        // -- Tratamento do NAVEGADOR aqui
-
-        // Recebendo usuario do BD
-        UserDBAdapter dbAdapter = new UserDBAdapter(getBaseContext());
-        dbAdapter.open();
-        User user = dbAdapter.getUser();
-        dbAdapter.close();
-
-        // Tratando a foto
-        ImageView nav_img = (ImageView)findViewById(R.id.nav_header_image);
-        //Bitmap srcBmp = BitmapFactory.decodeResource(getResources(), R.drawable.foto);
-        Bitmap srcBmp = BitmapManager.byteArrayToBitmap(user.getPhoto());
-        Bitmap dstBmp;
-
-        if (srcBmp.getWidth() >= srcBmp.getHeight()){
-            dstBmp = Bitmap.createBitmap(srcBmp, srcBmp.getWidth()/2 - srcBmp.getHeight()/2, 0, srcBmp.getHeight(), srcBmp.getHeight());
-        }else{
-            dstBmp = Bitmap.createBitmap(srcBmp, 0, srcBmp.getHeight()/2 - srcBmp.getWidth()/2, srcBmp.getWidth(), srcBmp.getWidth());
-        }
-
-        Bitmap src = Bitmap.createScaledBitmap(dstBmp, 110, 110, true);
-
-        RoundedBitmapDrawable dr = RoundedBitmapDrawableFactory.create(getResources(), src);
-        dr.setCircular(true);
-        nav_img.setImageDrawable(dr);
-
-        // Tratando o nome
-        TextView nav_name = (TextView) findViewById(R.id.nav_header_name);
-        nav_name.setText(user.getName());
-
-        // Tratando o email
-        TextView nav_email = (TextView) findViewById(R.id.nav_header_email);
-        nav_email.setText(user.getEmail());
+        infoUpdate(getBaseContext(), this);
 
         return true;
     }
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -160,5 +139,41 @@ public class NavigationActivity extends AppCompatActivity
 
     public void logout(){
         Toast.makeText(getBaseContext(), "Você saiu da sua conta! AEEEEE! UHUUUUUUU!", Toast.LENGTH_LONG).show();
+    }
+
+    public static void infoUpdate(Context context, Activity activity) {
+        // -- Tratamento do NAVEGADOR aqui
+
+        // Recebendo usuario do BD
+        UserDBAdapter dbAdapter = new UserDBAdapter(context);
+        dbAdapter.open();
+        User user = dbAdapter.getUser();
+        dbAdapter.close();
+
+        // Tratando a foto
+        ImageView nav_img = (ImageView)activity.findViewById(R.id.nav_header_image);
+        //Bitmap srcBmp = BitmapFactory.decodeResource(getResources(), R.drawable.foto);
+        Bitmap srcBmp = BitmapManager.byteArrayToBitmap(user.getPhoto());
+        Bitmap dstBmp;
+
+        if (srcBmp.getWidth() >= srcBmp.getHeight()){
+            dstBmp = Bitmap.createBitmap(srcBmp, srcBmp.getWidth()/2 - srcBmp.getHeight()/2, 0, srcBmp.getHeight(), srcBmp.getHeight());
+        }else{
+            dstBmp = Bitmap.createBitmap(srcBmp, 0, srcBmp.getHeight()/2 - srcBmp.getWidth()/2, srcBmp.getWidth(), srcBmp.getWidth());
+        }
+
+        Bitmap src = Bitmap.createScaledBitmap(dstBmp, 110, 110, true);
+
+        RoundedBitmapDrawable dr = RoundedBitmapDrawableFactory.create(activity.getResources(), src);
+        dr.setCircular(true);
+        nav_img.setImageDrawable(dr);
+
+        // Tratando o nome
+        TextView nav_name = (TextView) activity.findViewById(R.id.nav_header_name);
+        nav_name.setText(user.getName());
+
+        // Tratando o email
+        TextView nav_email = (TextView) activity.findViewById(R.id.nav_header_email);
+        nav_email.setText(user.getEmail());
     }
 }

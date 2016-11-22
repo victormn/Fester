@@ -1,9 +1,10 @@
 package com.example.victor.fester.Navigation;
 
+import android.app.FragmentTransaction;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.view.LayoutInflater;
@@ -22,9 +23,7 @@ public class Fragment_Info extends Fragment {
     public Fragment_Info() {}
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    public void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,6 +65,23 @@ public class Fragment_Info extends Fragment {
         // Tratando o telefone
         TextView nav_phone = (TextView) view.findViewById(R.id.info_phone);
         nav_phone.setText(user.getPhone());
+
+
+        // -- Tratando botao
+        final FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab_info);
+        fab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                Fragment fragment = new Fragment_Info_Update();
+
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+
+                ft.replace(R.id.nav_content, fragment);
+                ft.addToBackStack(null);
+                ft.commit();
+
+            }
+        });
 
         return view;
     }

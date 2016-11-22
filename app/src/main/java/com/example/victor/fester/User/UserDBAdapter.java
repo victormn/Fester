@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
-import android.widget.ImageView;
 
 import com.example.victor.fester.R;
 import com.example.victor.fester.Toolbox.BitmapManager;
@@ -87,7 +86,6 @@ public class UserDBAdapter {
 
         for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()){
             User user = cursorToUser(cursor);
-            System.out.println(user.getName());
             users.add(user);
         }
 

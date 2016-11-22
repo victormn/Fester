@@ -11,8 +11,9 @@ import java.io.ByteArrayOutputStream;
 public class BitmapManager {
 
     public static byte[] bitmapToByteArray (Bitmap bitmap) {
+
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         return stream.toByteArray();
     }
 

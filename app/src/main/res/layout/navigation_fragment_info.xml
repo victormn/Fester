@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     tools:context=".Navigation.Fragment_Info"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:id="@+id/nav_">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -19,7 +20,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Victor Marcelino Nunes"
         android:id="@+id/info_name"
         android:layout_gravity="center_horizontal"
         android:textSize="25sp"
@@ -29,7 +29,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="victor95nunes@gmail.com"
         android:id="@+id/info_email"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp" />
@@ -38,7 +37,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="+55(19)995919193"
         android:id="@+id/info_phone"
         android:layout_gravity="center_horizontal" />
 
