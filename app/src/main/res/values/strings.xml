@@ -33,5 +33,15 @@
     <string name="info_photo">Alterar Foto</string>
     <string name="info_info">Deixe em branco caso não deseje editar</string>
     <string name="info_update">Atualizar Informações</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <!--Erros-->
+    <string name="error_status_party">Erro na leitura do status da festa</string>
+    <string name="error_role_party">Erro na leitura do papel do usuário</string>
+    <string name="title_activity_party_info">PartyInfo</string>
+
+    <!--Festas-->
+    <string name="party_finished">Esta festa já foi encerrada</string>
+    <string name="party_info">Informações da Festa</string>
 
 </resources>

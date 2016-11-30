@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.victor.fester">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -10,48 +10,43 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
-            android:name=".TabbedActivity"
+            android:name=".DJ.TabbedActivity"
             android:label="@string/title_dj"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Music.MusicAddMenu"
             android:label="@string/title_addmusic"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
-            android:name=".Navigation.NavigationActivity"
+            android:name=".NavigationActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-
-        <activity
-            android:name=".Login.Login"
-            android:label="Fester!" />
-
-        <activity
-            android:name=".Login.Register"
-            android:label="Fester!" />
-        <activity android:name=".Toolbox.QRGenerator" />
-        <activity android:name=".Login.Initial">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Admin.AdminScreen" />
-        <activity android:name=".Admin.Reader"></activity>
+        <activity
+            android:name=".Login.Login"
+            android:label="Fester!" />
+        <activity
+            android:name=".Login.Register"
+            android:label="Fester!" />
+        <activity android:name=".Toolbox.QRGenerator" />
+        <activity android:name=".Login.Initial">
 
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".Admin.AdminScreen" />
+        <activity android:name=".Admin.QRCode.Reader" />
+        <activity android:name=".Party.PartyInfo"></activity>
     </application>
 
 </manifest>

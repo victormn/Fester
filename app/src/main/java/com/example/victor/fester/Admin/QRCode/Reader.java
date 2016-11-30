@@ -1,4 +1,4 @@
-package com.example.victor.fester.Admin;
+package com.example.victor.fester.Admin.QRCode;
 
 import android.content.Intent;
 import android.os.Bundle;

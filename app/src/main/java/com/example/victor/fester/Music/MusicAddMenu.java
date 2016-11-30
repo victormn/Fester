@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 import com.example.victor.fester.DJ.Playlist.PlaylistDBAdapter;
 import com.example.victor.fester.R;
-import com.example.victor.fester.TabbedActivity;
+import com.example.victor.fester.DJ.TabbedActivity;
 
 public class MusicAddMenu extends AppCompatActivity {
 

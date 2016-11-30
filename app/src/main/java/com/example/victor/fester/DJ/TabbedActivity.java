@@ -1,4 +1,4 @@
-package com.example.victor.fester;
+package com.example.victor.fester.DJ;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.victor.fester.DJ.Playlist.PlaylistFragmentList;
 import com.example.victor.fester.DJ.Ranking.RankingFragmentList;
 import com.example.victor.fester.Music.MusicAddMenu;
+import com.example.victor.fester.R;
 
 public class TabbedActivity extends AppCompatActivity {
 

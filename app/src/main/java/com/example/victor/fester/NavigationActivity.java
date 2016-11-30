@@ -1,7 +1,8 @@
-package com.example.victor.fester.Navigation;
+package com.example.victor.fester;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -21,17 +22,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.victor.fester.R;
+import com.example.victor.fester.Admin.AdminScreen;
+import com.example.victor.fester.Admin.QRCode.Reader;
+import com.example.victor.fester.DJ.TabbedActivity;
+import com.example.victor.fester.Navigation.Fragment_AboutUs;
+import com.example.victor.fester.Navigation.Fragment_Info;
+import com.example.victor.fester.Navigation.Fragment_Passport;
+import com.example.victor.fester.Party.PartyInfo;
 import com.example.victor.fester.Toolbox.BitmapManager;
 import com.example.victor.fester.User.User;
 import com.example.victor.fester.User.UserDBAdapter;
-
-import java.sql.SQLOutput;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Fragment fragment;
+
+    public final static String EXTRA_STATUS = "com.example.victor.fester.STATUS";
+    public final static String EXTRA_ID = "com.example.victor.fester.ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +59,7 @@ public class NavigationActivity extends AppCompatActivity
                 infoUpdate(getBaseContext(), activity);
             }
         };
+
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -60,6 +69,8 @@ public class NavigationActivity extends AppCompatActivity
         setTitle(getResources().getString(R.string.party));
 
         fragment = null;
+
+        openParty();
 
     }
 
@@ -178,5 +189,69 @@ public class NavigationActivity extends AppCompatActivity
         // Tratando o email
         TextView nav_email = (TextView) activity.findViewById(R.id.nav_header_email);
         nav_email.setText(user.getEmail());
+    }
+
+    public void openParty(){
+
+        String partyId = "0"; //getId()
+
+        String partyStatus = "finished"; //getStatus();
+        // valores possiveis: incoming, started, finished
+
+        String partyRole = "DJ"; //getPartyRole();
+        // valores possiveis: DJ, admin, vendedor, segurança, festeiro
+
+        Intent intent;
+
+        switch (partyStatus) {
+            case "incoming":
+                intent = new Intent(this, PartyInfo.class);
+                intent.putExtra(EXTRA_STATUS, partyStatus);
+                intent.putExtra(EXTRA_ID, partyId);
+                startActivity(intent);
+                break;
+            case "started":
+                switch (partyRole) {
+                    case "DJ":
+                        intent = new Intent(this, TabbedActivity.class);
+                        intent.putExtra(EXTRA_ID, partyId);
+                        startActivity(intent);
+                        break;
+                    case "admin":
+                        intent = new Intent(this, AdminScreen.class);
+                        intent.putExtra(EXTRA_ID, partyId);
+                        startActivity(intent);
+                        break;
+                    case "vendedor":
+                        intent = new Intent(this, AdminScreen.class);
+                        intent.putExtra(EXTRA_ID, partyId);
+                        startActivity(intent);
+                        break;
+                    case "segurança":
+                        intent = new Intent(this, Reader.class);
+                        intent.putExtra(EXTRA_ID, partyId);
+                        startActivity(intent);
+                        break;
+                    case "festeiro":
+                        intent = new Intent(this, TabbedActivity.class); //!!!!!!!!!!!
+                        intent.putExtra(EXTRA_ID, partyId);
+                        startActivity(intent);
+                        break;
+                    default:
+                        System.out.println(getResources().getString(R.string.error_role_party));
+                        break;
+                }
+                break;
+            case "finished":
+                intent = new Intent(this, PartyInfo.class);
+                intent.putExtra(EXTRA_STATUS, partyStatus);
+                intent.putExtra(EXTRA_ID, partyId);
+                startActivity(intent);
+
+                break;
+            default:
+                System.out.println(getResources().getString(R.string.error_status_party));
+                break;
+        }
     }
 }
