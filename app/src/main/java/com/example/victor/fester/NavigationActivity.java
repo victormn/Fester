@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.example.victor.fester.Admin.AdminScreen;
 import com.example.victor.fester.Admin.QRCode.Reader;
 import com.example.victor.fester.DJ.TabbedActivity;
+import com.example.victor.fester.Login.Login;
 import com.example.victor.fester.Navigation.Fragment_AboutUs;
 import com.example.victor.fester.Navigation.Fragment_Info;
 import com.example.victor.fester.Navigation.Fragment_Passport;
@@ -152,7 +153,11 @@ public class NavigationActivity extends AppCompatActivity
     }
 
     public void logout(){
-        Toast.makeText(getBaseContext(), "Você saiu da sua conta! AEEEEE! UHUUUUUUU!", Toast.LENGTH_LONG).show();
+        
+        Intent intent = new Intent(this, Login.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 
     public static void infoUpdate(Context context, Activity activity) {

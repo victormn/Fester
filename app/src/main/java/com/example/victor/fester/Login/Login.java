@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.victor.fester.Admin.AdminScreen;
 import com.example.victor.fester.NavigationActivity;
 import com.example.victor.fester.R;
+import com.example.victor.fester.Toolbox.QRGenerator;
 
 public class Login extends AppCompatActivity {
 
@@ -27,16 +29,27 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                EditText emailEditText = (EditText) findViewById(R.id.login_email);
-                String email = emailEditText.getText().toString();
+                EditText userEditText = (EditText) findViewById(R.id.login_username);
+                String user = userEditText.getText().toString();
 
                 EditText senhaEditText = (EditText) findViewById(R.id.login_password);
                 String senha = senhaEditText.getText().toString();
 
-                //enviar e validar
+                if(user.equals("") | senha.equals(""))
+                    Toast.makeText(getBaseContext(), "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
 
-                Intent gIntent = new Intent (Login.this, NavigationActivity.class);
-                startActivity(gIntent);
+                else {
+
+                    boolean login = true; //verificar
+
+                    if(login) {
+
+                        QRGenerator.generateQR(userEditText, getBaseContext());
+
+                        Intent gIntent = new Intent(Login.this, NavigationActivity.class);
+                        startActivity(gIntent);
+                    }else Toast.makeText(getBaseContext(), "Login ou senha incorretos", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

@@ -38,25 +38,26 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:text="@string/email_"/>
+            android:text="@string/username"/>
         <EditText android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dip"
             android:layout_marginBottom="20dip"
             android:textColor="@android:color/white"
             android:singleLine="true"
-            android:id="@+id/login_email" />
+            android:id="@+id/login_username" />
         <!--  Password Label -->
         <TextView android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:text="@string/senha_"/>
+            android:text="@string/senha"/>
         <EditText android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dip"
             android:textColor="@android:color/white"
             android:singleLine="true"
+            android:inputType="textPassword"
             android:password="true"
             android:id="@+id/login_password" />
         <!-- Login button -->
@@ -64,7 +65,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dip"
-            android:text="@string/login_"
+            android:text="@string/login"
             android:textColor="@android:color/holo_purple"
             android:textSize="24sp"
             style="@style/Widget.AppCompat.Button.Borderless" />
@@ -76,7 +77,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="347dp" />
+        android:layout_marginBottom="347dp"
+        android:id="@+id/imageView" />
 
     <!-- Login Form Ends -->
 

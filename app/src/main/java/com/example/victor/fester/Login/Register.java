@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.victor.fester.R;
 import com.example.victor.fester.Toolbox.BitmapManager;
+import com.example.victor.fester.Toolbox.QRGenerator;
 import com.example.victor.fester.User.User;
 import com.example.victor.fester.User.UserDBAdapter;
 import com.google.zxing.BarcodeFormat;
@@ -43,39 +44,16 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(
-                        username.getText().toString().equals("") |
-                        email.getText().toString().equals("") |
-                        nome.getText().toString().equals("") |
-                        senha.getText().toString().equals("")
-                )
+                    username.getText().toString().equals("") |
+                    email.getText().toString().equals("") |
+                    nome.getText().toString().equals("") |
+                    senha.getText().toString().equals(""))
+
                     Toast.makeText(getBaseContext(), "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
 
                 else {
 
-                    Bitmap bitmap = null;
-                    byte[] photo = new byte[0];
-
-                    // Generating QRCode from username
-                    MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-                    try {
-                        BitMatrix bitMatrix = multiFormatWriter.encode(username.getText().toString(), BarcodeFormat.QR_CODE, 600, 600);
-                        BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-                        bitmap = barcodeEncoder.createBitmap(bitMatrix);
-                    } catch (WriterException e) {
-                        e.printStackTrace();
-                    }
-
-                    if (bitmap == null) System.out.println("Erro ao gerar o QR Code");
-                    else photo = BitmapManager.bitmapToByteArray(bitmap);
-
-                    // Recebendo usuario do BD
-                    UserDBAdapter dbAdapter = new UserDBAdapter(getBaseContext());
-                    dbAdapter.open();
-                    User user = dbAdapter.getUser();
-                    dbAdapter.close();
-
-                    user.setQr(photo);
-                    user.toDataBase(getBaseContext());
+                    //registrar no BD
 
                     Intent gIntent = new Intent(Register.this, Login.class);
                     startActivity(gIntent);
