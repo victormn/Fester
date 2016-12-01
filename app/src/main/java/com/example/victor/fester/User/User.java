@@ -12,13 +12,15 @@ public class User {
     private String email;
     private String phone;
     private byte[] photo;
+    private byte[] qr;
     private long id;
 
-    public User(long id, String name, String email, String phone, byte[] photo){
+    public User(long id, String name, String email, String phone, byte[] photo,  byte[] qr){
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.photo = photo;
+        this.qr = qr;
         this.id = id;
     }
 
@@ -29,6 +31,10 @@ public class User {
     public void setPhone(String phone) {this.phone = phone;}
 
     public void setPhoto(byte[] photo) {this.photo = photo;}
+
+    public byte[] getQr() {return qr;}
+
+    public void setQr(byte[] qr) {this.qr = qr;}
 
     public String getName() {return name;}
 
@@ -49,7 +55,7 @@ public class User {
         dbAdapter.deleteUsers();
 
         // Update
-        dbAdapter.updateUser(this.name, this.email, this.phone, this.photo);
+        dbAdapter.updateUser(this.name, this.email, this.phone, this.photo, this.qr);
 
         dbAdapter.close();
     }

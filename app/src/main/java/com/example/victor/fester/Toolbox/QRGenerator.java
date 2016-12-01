@@ -20,10 +20,10 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
  */
 public class QRGenerator extends AppCompatActivity {
 
-    EditText text;
+    static EditText text;
     Button gen_btn;
     ImageView image;
-    String text2QR;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +35,9 @@ public class QRGenerator extends AppCompatActivity {
         gen_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                text2QR = text.getText().toString().trim();
                 MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
                 try{
-                    BitMatrix bitMatrix = multiFormatWriter.encode("text2Qr", BarcodeFormat.QR_CODE, 200, 200);
+                    BitMatrix bitMatrix = multiFormatWriter.encode(text.getText().toString(), BarcodeFormat.QR_CODE, 200, 200);
                     BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                     Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
                     image.setImageBitmap(bitmap);

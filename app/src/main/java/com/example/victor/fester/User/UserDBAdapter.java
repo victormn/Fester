@@ -29,15 +29,17 @@ public class UserDBAdapter {
     public static final String COLUMN_EMAIL = "email";
     public static final String COLUMN_PHONE = "phone";
     public static final String COLUMN_PHOTO = "photo";
+    public static final String COLUMN_QRCODE = "qrcode";
 
-    private String[] allColumns = {COLUMN_ID, COLUMN_NAME, COLUMN_EMAIL, COLUMN_PHONE, COLUMN_PHOTO};
+    private String[] allColumns = {COLUMN_ID, COLUMN_NAME, COLUMN_EMAIL, COLUMN_PHONE, COLUMN_PHOTO, COLUMN_QRCODE};
 
     public static final String CREATE_TABLE_USER = "create table " + USER_TABLE + " ( "
             + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_NAME + " text not null, "
             + COLUMN_EMAIL + " text not null, "
             + COLUMN_PHONE + " text not null, "
-            + COLUMN_PHOTO + " blob);";
+            + COLUMN_PHOTO + " blob, "
+            + COLUMN_QRCODE + " blob);";
 
     private SQLiteDatabase sqlDB;
     private Context context;
@@ -58,13 +60,14 @@ public class UserDBAdapter {
         userDBHelper.close();
     }
 
-    public User updateUser(String name, String email, String phone, byte[] photo){
+    public User updateUser(String name, String email, String phone, byte[] photo, byte[] qrcode){
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, name);
         values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_PHONE, phone);
         values.put(COLUMN_PHOTO, photo);
+        values.put(COLUMN_QRCODE, qrcode);
 
         long insertId = sqlDB.insert(USER_TABLE,null, values);
 
@@ -98,10 +101,13 @@ public class UserDBAdapter {
             String email = "usuario@email.com";
             String phone = "(00)000000000";
 
-            Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.foto);
-            byte[] photo = BitmapManager.bitmapToByteArray(bitmap);
+            Bitmap photoB = BitmapFactory.decodeResource(context.getResources(), R.drawable.foto);
+            byte[] photo = BitmapManager.bitmapToByteArray(photoB);
 
-            returnUser = updateUser(name, email, phone, photo);
+            Bitmap qrB = BitmapFactory.decodeResource(context.getResources(), R.drawable.qr);
+            byte[] qr = BitmapManager.bitmapToByteArray(qrB);
+
+            returnUser = updateUser(name, email, phone, photo, qr);
 
         }else returnUser = users.get(0);
 
@@ -109,7 +115,7 @@ public class UserDBAdapter {
     }
 
     private User cursorToUser(Cursor cursor){
-        User user = new User(cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getBlob(4));
+        User user = new User(cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getBlob(4), cursor.getBlob(5));
         return user;
     }
 

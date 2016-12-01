@@ -47,7 +47,7 @@ public class AdminScreen extends AppCompatActivity {
         btnManage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mIntent = new Intent (AdminScreen.this, Reader.class);
+                Intent mIntent = new Intent (AdminScreen.this, Permission.class);
                 startActivity(mIntent);
             }
         });

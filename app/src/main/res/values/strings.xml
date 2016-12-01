@@ -43,5 +43,24 @@
     <!--Festas-->
     <string name="party_finished">Esta festa já foi encerrada</string>
     <string name="party_info">Informações da Festa</string>
+    <string name="atualizar_dados_da_festa">Atualizar dados da festa</string>
+    <string name="descri_o_da_festa">Descrição da festa</string>
+    <string name="hor_rio_da_festa">Horário da festa</string>
+    <string name="local_da_festa">Local da festa</string>
+    <string name="nome_da_festa">Nome da festa</string>
+    <string name="editar_festa">Editar festa</string>
+    <string name="adicionar_vendedor">Adicionar vendedor</string>
+    <string name="adicionar_administrador">Adicionar administrador</string>
+    <string name="adicionar_dj">Adicionar DJ</string>
+    <string name="adicionar_seguran_a">Adicionar segurança</string>
+    <string name="registrar_nova_conta">Registrar Nova Conta</string>
+    <string name="login">Login</string>
+    <string name="senha">Senha</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="nome_completo">Nome completo</string>
+    <string name="email_">Email</string>
+    <string name="login_">Login</string>
+    <string name="senha_">Senha</string>
 
 </resources>

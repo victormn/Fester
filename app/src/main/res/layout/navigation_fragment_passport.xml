@@ -10,8 +10,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/img_passport"
         android:layout_gravity="center"
-        android:src="@drawable/qr"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,6 +19,6 @@
         android:text="@string/passport_alert"
         android:id="@+id/txt_info_passport"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>

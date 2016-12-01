@@ -8,6 +8,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Admin.QRCode.Reader">
+    tools:context="com.example.victor.fester.Admin.QRCode.Reader">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="SCAN"
+        android:id="@+id/scan_btn"/>
 
 </RelativeLayout>

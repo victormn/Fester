@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_edit"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.victor.fester.Party.EditParty"
+    android:orientation="vertical">
+
+    <!-- Party Name -->
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:text="@string/nome_da_festa"/>
+
+    <EditText android:id="@+id/party_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:singleLine="true" />
+
+    <!--  Party location -->
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:text="@string/local_da_festa"
+        android:layout_marginTop="10dp" />
+    <EditText android:id="@+id/party_loc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black" />
+
+    <!-- Party time -->
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:text="@string/hor_rio_da_festa"
+        android:layout_marginTop="10dp" />
+    <EditText android:id="@+id/party_time"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black" />
+
+    <!-- Party description -->
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:text="@string/descri_o_da_festa"
+        android:layout_marginTop="10dp" />
+    <EditText android:id="@+id/party_descrip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black" />
+
+    <!-- Refresh Button -->
+    <Button android:id="@+id/btnRefresh"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#E1BEE7"
+        android:textColor="#424242"
+        android:layout_marginTop="10dip"
+        android:text="@string/atualizar_dados_da_festa"/>
+
+</LinearLayout>
