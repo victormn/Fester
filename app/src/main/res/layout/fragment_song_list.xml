@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/selected_area"
+            android:orientation="vertical"
+            android:nestedScrollingEnabled="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/selected_songs_text_view"
+                    android:text="@string/selected_songs_text"
+                    style="@style/TextAppearance.AppCompat.Subhead"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    />
+
+                <Button
+                    android:id="@+id/send_to_dj_button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/send_songs"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:drawableEnd="@drawable/ic_send_yellow_500_24dp"
+                    android:drawablePadding="8dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+
+                android:id="@+id/selected_songs_recycler_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/all_songs_area"
+            android:nestedScrollingEnabled="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/all_songs_text_view"
+                android:text="@string/all_songs_text"
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/all_songs_recycler_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+
