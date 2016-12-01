@@ -12,11 +12,6 @@ import com.example.victor.fester.R;
 
 public class PartyInfo extends AppCompatActivity {
 
-    private String partyName;
-    private String patyLocal;
-    private String partyHora;
-    private String partyDescription;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,21 +19,32 @@ public class PartyInfo extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        int id = Integer.parseInt(intent.getStringExtra(NavigationActivity.EXTRA_ID));
-        updateInfo(id);
+        String partyName = intent.getStringExtra(NavigationActivity.EXTRA_NOME);
+        String patyLocal = intent.getStringExtra(NavigationActivity.EXTRA_LOCAL);
+        String partyHora = intent.getStringExtra(NavigationActivity.EXTRA_HORA);
+        String partyDescription = intent.getStringExtra(NavigationActivity.EXTRA_DESCRICAO);
+        String partymes = intent.getStringExtra(NavigationActivity.EXTRA_MES);
+        String partydia = intent.getStringExtra(NavigationActivity.EXTRA_DIA);
+        String partyano = intent.getStringExtra(NavigationActivity.EXTRA_ANO);
+
+        partymes = Integer.toString(Integer.parseInt(partymes)+1);
+
+        String partydata = partydia+"/"+partymes+"/"+partyano;
 
         TextView name = (TextView) findViewById(R.id.info_party_name);
         TextView local = (TextView) findViewById(R.id.info_party_local);
         TextView hora = (TextView) findViewById(R.id.info_party_horario);
         TextView description = (TextView) findViewById(R.id.info_party_description);
         TextView finished = (TextView) findViewById(R.id.info_party_finished);
+        TextView data = (TextView) findViewById(R.id.info_party_data);
 
         finished.setVisibility(View.INVISIBLE);
 
         name.setText(partyName);
         local.setText(patyLocal);
-        hora.setText(partyHora);
+        hora.setText(partyHora + ":00h");
         description.setText(partyDescription);
+        data.setText(partydata);
 
         String status = intent.getStringExtra(NavigationActivity.EXTRA_STATUS);
 
@@ -49,15 +55,6 @@ public class PartyInfo extends AppCompatActivity {
         }
 
         setTitle(getResources().getString(R.string.party_info));
-
-    }
-
-    public void updateInfo(int id){
-
-        partyName = "PARTY HARD ENGCOMP"; //getName by id
-        patyLocal = "Bloco 8"; //getLocal by id
-        partyHora = "23:59h"; //getTime by id
-        partyDescription = "aehoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"; //getDescription by id
 
     }
 

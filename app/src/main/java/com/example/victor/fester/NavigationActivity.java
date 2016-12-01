@@ -20,13 +20,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.victor.fester.Admin.AdminScreen;
-import com.example.victor.fester.Admin.QRCode.Reader;
+import com.example.victor.fester.Admin.Reader;
 import com.example.victor.fester.DJ.TabbedActivity;
 import com.example.victor.fester.Login.Initial;
-import com.example.victor.fester.Login.Login;
 import com.example.victor.fester.Navigation.Fragment_AboutUs;
 import com.example.victor.fester.Navigation.Fragment_Info;
 import com.example.victor.fester.Navigation.Fragment_Passport;
@@ -35,12 +33,21 @@ import com.example.victor.fester.Toolbox.BitmapManager;
 import com.example.victor.fester.User.User;
 import com.example.victor.fester.User.UserDBAdapter;
 
+import java.util.Calendar;
+
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Fragment fragment;
 
     public final static String EXTRA_STATUS = "com.example.victor.fester.STATUS";
+    public final static String EXTRA_DESCRICAO = "com.example.victor.fester.DESCRICAO";
+    public final static String EXTRA_LOCAL = "com.example.victor.fester.LOCAL";
+    public final static String EXTRA_NOME = "com.example.victor.fester.NOME";
+    public final static String EXTRA_HORA = "com.example.victor.fester.HORA";
+    public final static String EXTRA_DIA = "com.example.victor.fester.DIA";
+    public final static String EXTRA_MES = "com.example.victor.fester.MES";
+    public final static String EXTRA_ANO = "com.example.victor.fester.ANO";
     public final static String EXTRA_ID = "com.example.victor.fester.ID";
 
     @Override
@@ -197,11 +204,61 @@ public class NavigationActivity extends AppCompatActivity
         nav_phone.setText(user.getPhone());
     }
 
+    public String getPartyStatus(int hora, int dia, int mes, int ano){
+
+        String result = null;
+
+        Calendar calendar = Calendar.getInstance();
+
+        if(calendar.get(Calendar.YEAR) > ano){
+            result = "finished";
+        }
+        else if(calendar.get(Calendar.YEAR) == ano){
+
+            if(calendar.get(Calendar.MONTH) > mes){
+                result = "finished";
+            }
+            else if (calendar.get(Calendar.MONTH) == mes){
+
+                if (calendar.get(Calendar.DAY_OF_MONTH) < dia){
+                    result = "incoming";
+                }
+                else if (calendar.get(Calendar.DAY_OF_MONTH) == dia){
+                    if((hora < calendar.get(Calendar.HOUR_OF_DAY)) && ((hora+5) > calendar.get(Calendar.HOUR_OF_DAY)))
+                        result = "started";
+                    else if(hora > calendar.get(Calendar.HOUR_OF_DAY))
+                        result = "incoming";
+                    else if((hora+5) < calendar.get(Calendar.HOUR_OF_DAY))
+                        result = "finished";
+                }
+                else if (calendar.get(Calendar.DAY_OF_MONTH) == dia+1){
+                    if((hora+5)%24 > calendar.get(Calendar.HOUR_OF_DAY))
+                        result = "started";
+                    else result = "finished";
+                }
+                else result = "finished";
+            }
+            else result = "incoming";
+        }
+        else result = "incoming";
+
+        System.out.println("result : " + result);
+        return result;
+    }
+
     public void openParty(){
 
-        String partyId = "0"; //getId()
+        int hora = 1; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        int dia = 1; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        int mes = 11; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        int ano = 2017; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        String descricao = "Descricao"; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        String nomeFesta = "Nomes"; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        String local = "Local"; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-        String partyStatus = "finished"; //getStatus();
+        String partyId = "0"; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        String partyStatus = getPartyStatus(hora, dia, mes, ano);
         // valores possiveis: incoming, started, finished
 
         String partyRole = "DJ"; //getPartyRole();
@@ -213,7 +270,13 @@ public class NavigationActivity extends AppCompatActivity
             case "incoming":
                 intent = new Intent(this, PartyInfo.class);
                 intent.putExtra(EXTRA_STATUS, partyStatus);
-                intent.putExtra(EXTRA_ID, partyId);
+                intent.putExtra(EXTRA_DESCRICAO, descricao);
+                intent.putExtra(EXTRA_NOME, nomeFesta);
+                intent.putExtra(EXTRA_LOCAL, local);
+                intent.putExtra(EXTRA_HORA, Integer.toString(hora));
+                intent.putExtra(EXTRA_DIA, Integer.toString(dia));
+                intent.putExtra(EXTRA_MES, Integer.toString(mes));
+                intent.putExtra(EXTRA_ANO, Integer.toString(ano));
                 startActivity(intent);
                 break;
             case "started":
@@ -251,7 +314,13 @@ public class NavigationActivity extends AppCompatActivity
             case "finished":
                 intent = new Intent(this, PartyInfo.class);
                 intent.putExtra(EXTRA_STATUS, partyStatus);
-                intent.putExtra(EXTRA_ID, partyId);
+                intent.putExtra(EXTRA_DESCRICAO, descricao);
+                intent.putExtra(EXTRA_NOME, nomeFesta);
+                intent.putExtra(EXTRA_LOCAL, local);
+                intent.putExtra(EXTRA_HORA, Integer.toString(hora));
+                intent.putExtra(EXTRA_DIA, Integer.toString(dia));
+                intent.putExtra(EXTRA_MES, Integer.toString(mes));
+                intent.putExtra(EXTRA_ANO, Integer.toString(ano));
                 startActivity(intent);
 
                 break;
