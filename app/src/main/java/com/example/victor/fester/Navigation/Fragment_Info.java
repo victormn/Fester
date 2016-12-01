@@ -1,9 +1,15 @@
 package com.example.victor.fester.Navigation;
 
+import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -58,9 +64,6 @@ public class Fragment_Info extends Fragment {
         TextView nav_name = (TextView) view.findViewById(R.id.info_name);
         nav_name.setText(user.getName());
 
-        // Tratando o email
-        TextView nav_email = (TextView) view.findViewById(R.id.info_email);
-        nav_email.setText(user.getEmail());
 
         // Tratando o telefone
         TextView nav_phone = (TextView) view.findViewById(R.id.info_phone);
@@ -72,13 +75,8 @@ public class Fragment_Info extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
-                Fragment fragment = new Fragment_Info_Update();
-
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-
-                ft.replace(R.id.nav_content, fragment);
-                ft.addToBackStack(null);
-                ft.commit();
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 1);
 
             }
         });
@@ -92,4 +90,34 @@ public class Fragment_Info extends Fragment {
         getActivity().setTitle(getResources().getString(R.string.info));
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode){
+            case 1:
+                if(resultCode == Activity.RESULT_OK){
+                    Uri uri = data.getData();
+                    String[] projection = {MediaStore.Images.Media.DATA};
+
+                    Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
+                    cursor.moveToFirst();
+
+                    String filePath = cursor.getString(cursor.getColumnIndex(projection[0]));
+                    cursor.close();
+
+                    Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+                    byte[] photo = BitmapManager.bitmapToByteArray(bitmap);
+
+                    // Recebendo usuario do BD
+                    UserDBAdapter dbAdapter = new UserDBAdapter(getActivity().getBaseContext());
+                    dbAdapter.open();
+                    User user = dbAdapter.getUser();
+                    dbAdapter.close();
+
+                    user.setPhoto(photo);
+                    user.toDataBase(getActivity().getBaseContext());
+                }
+        }
+    }
 }

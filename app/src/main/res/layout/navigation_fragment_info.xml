@@ -29,14 +29,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/info_email"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/info_phone"
         android:layout_gravity="center_horizontal" />
 
@@ -44,7 +36,7 @@
         android:id="@+id/fab_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_settings_white_48dp"
+        android:src="@drawable/ic_photo_camera_white_48dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp" />
 

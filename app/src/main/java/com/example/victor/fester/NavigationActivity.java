@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.example.victor.fester.Admin.AdminScreen;
 import com.example.victor.fester.Admin.QRCode.Reader;
 import com.example.victor.fester.DJ.TabbedActivity;
+import com.example.victor.fester.Login.Initial;
 import com.example.victor.fester.Login.Login;
 import com.example.victor.fester.Navigation.Fragment_AboutUs;
 import com.example.victor.fester.Navigation.Fragment_Info;
@@ -154,7 +155,7 @@ public class NavigationActivity extends AppCompatActivity
 
     public void logout(){
         
-        Intent intent = new Intent(this, Login.class);
+        Intent intent = new Intent(this, Initial.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
@@ -192,8 +193,8 @@ public class NavigationActivity extends AppCompatActivity
         nav_name.setText(user.getName());
 
         // Tratando o email
-        TextView nav_email = (TextView) activity.findViewById(R.id.nav_header_email);
-        nav_email.setText(user.getEmail());
+        TextView nav_phone = (TextView) activity.findViewById(R.id.nav_header_phone);
+        nav_phone.setText(user.getPhone());
     }
 
     public void openParty(){
