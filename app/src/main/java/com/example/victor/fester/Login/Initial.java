@@ -8,6 +8,8 @@ import android.widget.Button;
 
 import com.example.victor.fester.R;
 
+import br.usp.fester.fester.AmazonAppHelper;
+
 /**
  * Created by Victor on 25/11/2016.
  */
@@ -40,5 +42,7 @@ public class Initial extends AppCompatActivity {
                 startActivity(lIntent);
             }
         });
+
+        AmazonAppHelper.initialize(Initial.this);
     }
 }

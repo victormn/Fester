@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.example.victor.fester.NavigationActivity;
 import com.example.victor.fester.R;
 
+import br.usp.fester.fester.party.PartiesFragment;
+
 public class PartyInfo extends AppCompatActivity {
 
     @Override
@@ -19,15 +21,13 @@ public class PartyInfo extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String partyName = intent.getStringExtra(NavigationActivity.EXTRA_NOME);
-        String patyLocal = intent.getStringExtra(NavigationActivity.EXTRA_LOCAL);
-        String partyHora = intent.getStringExtra(NavigationActivity.EXTRA_HORA);
-        String partyDescription = intent.getStringExtra(NavigationActivity.EXTRA_DESCRICAO);
-        String partymes = intent.getStringExtra(NavigationActivity.EXTRA_MES);
-        String partydia = intent.getStringExtra(NavigationActivity.EXTRA_DIA);
-        String partyano = intent.getStringExtra(NavigationActivity.EXTRA_ANO);
-
-        partymes = Integer.toString(Integer.parseInt(partymes)+1);
+        String partyName = intent.getStringExtra(PartiesFragment.EXTRA_NOME);
+        String patyLocal = intent.getStringExtra(PartiesFragment.EXTRA_LOCAL);
+        String partyHora = intent.getStringExtra(PartiesFragment.EXTRA_HORA);
+        String partyDescription = intent.getStringExtra(PartiesFragment.EXTRA_DESCRICAO);
+        String partymes = intent.getStringExtra(PartiesFragment.EXTRA_MES);
+        String partydia = intent.getStringExtra(PartiesFragment.EXTRA_DIA);
+        String partyano = intent.getStringExtra(PartiesFragment.EXTRA_ANO);
 
         String partydata = partydia+"/"+partymes+"/"+partyano;
 
@@ -46,7 +46,7 @@ public class PartyInfo extends AppCompatActivity {
         description.setText(partyDescription);
         data.setText(partydata);
 
-        String status = intent.getStringExtra(NavigationActivity.EXTRA_STATUS);
+        String status = intent.getStringExtra(PartiesFragment.EXTRA_STATUS);
 
         if(status.equals("finished")){
             finished.setText(getResources().getString(R.string.party_finished));

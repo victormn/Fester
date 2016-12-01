@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Fester!</string>
     <string name="action_settings">Settings</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -60,5 +61,49 @@
     <string name="username">Username</string>
     <string name="email">Email</string>
     <string name="nome_completo">Nome completo</string>
+
+
+    <string name="button_signup">Cadastrar-se</string>
+    <string name="button_login">Login</string>
+    <string name="landing_welcome">Bem-vindo ao Fester!</string>
+
+    <!-- Strings related to sign-up and login -->
+    <string name="hint_name">Nome</string>
+    <string name="hint_phone_number">Telefone</string>
+    <string name="email_address">Endereço de email</string>
+    <string name="hint_last_name">Sobrenome</string>
+    <string name="hint_username">Nome de usuário</string>
+    <string name="hint_password">Senha</string>
+
+    <string name="signup_user_attributes">Para que você use o Fester, é preciso nos dar alguns detalhes:</string>
+    <string name="signup_user_login_details">Defina o nome de usuário e a senha com os quais você fará login no Fester</string>
+
+    <string name="signup_wait_dialog">Cadastrando usuário</string>
+    <string name="login_wait_dialog">Fazendo login</string>
+
+    <string name="login_input_credentials">Vamos voltar à Festa!</string>
+
+    <string name="parties_my_parties">Minhas festas</string>
+    <string name="add_party_name">Nome da festa</string>
+    <string name="add_party_date">Data</string>
+    <string name="add_party_time">Horário</string>
+    <string name="add_party_description">Descrição</string>
+    <string name="add_party_new_party_label">Nova festa</string>
+    <string name="add_party_create_party">Criar festa</string>
+
+    <string name="add_party_date_alert_dialog">Data da festa</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_party_save_event">SALVAR</string>
+    <string name="add_party_place">Lugar</string>
+    <string name="add_party_wait_dialog">Salvando a festa...</string>
+
+    <string name="party_list_refreshing">Baixando sua lista de festas...</string>
+    <string name="party_list_please_wait">Por favor, aguarde</string>
+
+    <string name="all_songs_text">Todas as músicas</string>
+    <string name="selected_songs_text">Músicas selecionadas</string>
+    <string name="send_songs">TOCA, DJ!</string>
+    <string name="telefone">Telefone</string>
 
 </resources>

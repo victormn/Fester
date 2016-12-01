@@ -8,7 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
@@ -63,11 +63,6 @@ public class Fragment_Info extends Fragment {
         // Tratando o nome
         TextView nav_name = (TextView) view.findViewById(R.id.info_name);
         nav_name.setText(user.getName());
-
-
-        // Tratando o telefone
-        TextView nav_phone = (TextView) view.findViewById(R.id.info_phone);
-        nav_phone.setText(user.getPhone());
 
 
         // -- Tratando botao

@@ -7,4 +7,15 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="button_bilateral_padding">16dp</dimen>
+    <dimen name="party_card_padding">8dp</dimen>
+    <dimen name="party_card_label_padding">8dp</dimen>
+    <dimen name="party_card_label_margin">2dp</dimen>
+    <dimen name="party_card_my_parties_padding">8dp</dimen>
+    <dimen name="party_list_refresh_button_padding">8dp</dimen>
+
+    <dimen name="song_card_elevation">0.3dp</dimen>
+    <dimen name="song_card_margin">0.1dp</dimen>
 </resources>
